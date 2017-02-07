@@ -19,21 +19,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				where u.roleId = r.id
 				and u.roleId = #{id}
 	</select>
-	
-	<resultMap type="user" id="seachUserResultByDeptId">
+
+
+
+	<!--  多对一的Mapper   -->
+	<resultMap type="User" id="seachUserResultTwo">
 		<result property="id" column="id"/>
 		<result property="userCode" column="userCode"/>
 		<result property="username" column="username"/>
-		<result property="deptId" column="deptId"/>
-		<result property="depName" column="depName"/>
+		<result property="roleId" column="roleId"/>
+		<association property="role" javaType="Role" resultMap="resultMap"/>
 	</resultMap>
+
+
 	<select id="getUserListByDeptId" parameterType="Department" resultMap="seachUserResultByDeptId">
-		select u.*,d.depName as deptId
-			from user u, Department d
-				where u.roleId = d.id
-				
+		select u.*,r.roleName as roleCode,r.roleName as roleName
+		from user u, role r
+		where u.roleId = r.id
+		and u.roleId = #{id}
 	</select>
-	
+
+
+
 </mapper>
 
 

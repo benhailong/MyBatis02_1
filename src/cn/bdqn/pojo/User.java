@@ -1,5 +1,7 @@
 package cn.bdqn.pojo;
 
+import java.util.List;
+
 public class User {
 	private Integer id;
 	private String username;
@@ -9,6 +11,44 @@ public class User {
 	private String roleName;
 	private Integer deptId;
 	private String deptName;
+	// 多对一
+	private Role role;
+	private List<Address> addressList;
+
+
+	public Integer getDeptId() {
+		return deptId;
+	}
+
+	public void setDeptId(Integer deptId) {
+		this.deptId = deptId;
+	}
+
+	public String getDeptName() {
+		return deptName;
+	}
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public List<Address> getAddressList() {
+		return addressList;
+	}
+
+	public void setAddressList(List<Address> addressList) {
+		this.addressList = addressList;
+	}
+
+
 	
 	public Integer getId() {
 		return id;
